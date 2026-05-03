@@ -8,7 +8,7 @@ from src.ingestion.load_xml import load_xml, get_spark
 from src.ingestion.decrypt_gpg import decrypt_auto
 from src.utils.config_loader import Config
 from src.processing.dq_checks import apply_dq_rules, generate_dq_report, split_data
-
+from src.utils.email_utils import send_dq_email
 
 def run():
     print("🚀 Starting XML pipeline...")
@@ -70,6 +70,12 @@ def run():
 
     with open("data/output/dq_report/dq_report.json", "w") as f:
         json.dump(dq_report, f, indent=4)
+    send_dq_email(
+        dq_report,
+        Config.EMAIL_SENDER,
+        Config.EMAIL_RECEIVER,
+        Config.EMAIL_PASSWORD
+    )
 
 
 if __name__ == "__main__":
