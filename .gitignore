@@ -1,14 +1,64 @@
+# ==============================
 # Python
+# ==============================
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.log
 
-# Virtual env (don’t commit)
+# Virtual Environment
 venv/
+.env/
+.venv/
+
+# ==============================
+# Secrets / Config
+# ==============================
 .env
+*.env
+config/*.env
 
-# Logs & data
+# ==============================
+# Logs
+# ==============================
 logs/
-data/
+*.log
 
-# OS
+# ==============================
+# Data (VERY IMPORTANT)
+# ==============================
+data/raw/
+data/output/
+data/processed/
+
+# ==============================
+# Spark / Hadoop temp
+# ==============================
+spark-warehouse/
+metastore_db/
+*.crc
+*.parquet
+*.json
+
+# ==============================
+# Airflow (DO NOT COMMIT THESE)
+# ==============================
+airflow.db
+airflow.cfg
+webserver_config.py
+logs/
+dags/__pycache__/
+
+# ==============================
+# OS / Editor
+# ==============================
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ==============================
+# Jupyter (if any)
+# ==============================
+.ipynb_checkpoints/
